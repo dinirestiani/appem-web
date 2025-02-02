@@ -16,7 +16,7 @@ if (isset($_GET['url'])) {
                 break;
     }
 } else {
-    echo "Selamat datang di aplikasi pelaporan pengaduan masyarakat (APPEM).<br><br>";
+    echo "Selamat datang di aplikasi pelaporan pengaduan masyarakat.<br><br>";
     echo "Anda login sebagai: <h2><b>" . $_SESSION['nama'] . "</b></h2>";
 
     include '../koneksi.php'; // Perhatikan jalur file koneksi

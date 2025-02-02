@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Data Lihat Pengaduan</title>
+    <title>data tanggpan</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,20 +26,18 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Lihat Pengaduan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">data tanggapan</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Tanggal</th>
-                            <th>NIK</th>
-                            <th>Isi Laporan</th>
-                            <th>Foto</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th>ID tanggapan</th>
+                            <th>ID pengaduan</th>
+                            <th>tanggal</th>
+                            <th>tanggapan</th>
+                            <th>ID petugas</th>
                         </tr>
                     </thead>
                     
@@ -48,30 +46,21 @@
                         include '../koneksi.php'; // Pastikan koneksi.php sudah benar
 
                         // Perbaiki query dengan menambahkan koneksi
-                        $sql = mysqli_query($koneksi, "SELECT * FROM pengaduan WHERE status='0'");
+                        $sql = mysqli_query($koneksi, "SELECT * FROM tanggapan");
 
                         // Cek apakah query berhasil
                         if (!$sql) {
-                            die("Query gagal: " . mysqli_error($koneksi));
+                            die("Query gagal: " . mysqli_error($conn));
                         }
 
                         while ($data = mysqli_fetch_array($sql)) {
                             ?>
                                 <tr>
+                                    <td><?php echo $data['id_tanggapan']; ?></td>
                                     <td><?php echo $data['id_pengaduan']; ?></td>
-                                    <td><?php echo $data['tgl_pengaduan']; ?></td>
-                                    <td><?php echo $data['nik']; ?></td>
-                                    <td><?php echo $data['isi_laporan']; ?></td>
-                                    <td><img src="<?php echo $data['foto']; ?>" alt="Foto" style="width:100px; height:auto;"></td>
-                                    <td><?php echo $data['status']; ?></td>
-                                    <td>
-                                        <a href="?url=detail_pengaduan&id=<?php echo $data['id_pengaduan']; ?>" class="btn btn-info btn-icon-split">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-check"></i>
-                                            </span>
-                                            <span class="text">Detail & verifikasi</span>
-                                        </a>
-                                    </td>
+                                    <td><?php echo $data['tgl_tanggapan']; ?></td>
+                                    <td><?php echo $data['tanggapan']; ?></td>
+                                    <td><?php echo $data['id_petugas']; ?></td>                                    
                                 </tr>
                             <?php
                             }                            

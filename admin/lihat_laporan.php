@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Data Lihat Pengaduan</title>
+    <title>data laporan</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,7 +26,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Lihat Pengaduan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">data laporan</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -34,12 +34,12 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tanggal</th>
+                            <th>tanggal</th>
                             <th>NIK</th>
-                            <th>Isi Laporan</th>
-                            <th>Foto</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th>isi Laporan</th>
+                            <th>foto</th>
+                            <th>status</th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     
@@ -48,11 +48,11 @@
                         include '../koneksi.php'; // Pastikan koneksi.php sudah benar
 
                         // Perbaiki query dengan menambahkan koneksi
-                        $sql = mysqli_query($koneksi, "SELECT * FROM pengaduan WHERE status='0'");
+                        $sql = mysqli_query($koneksi, "SELECT * FROM pengaduan WHERE status='proses'");
 
                         // Cek apakah query berhasil
                         if (!$sql) {
-                            die("Query gagal: " . mysqli_error($koneksi));
+                            die("Query gagal: " . mysqli_error($conn));
                         }
 
                         while ($data = mysqli_fetch_array($sql)) {
@@ -65,11 +65,10 @@
                                     <td><img src="<?php echo $data['foto']; ?>" alt="Foto" style="width:100px; height:auto;"></td>
                                     <td><?php echo $data['status']; ?></td>
                                     <td>
-                                        <a href="?url=detail_pengaduan&id=<?php echo $data['id_pengaduan']; ?>" class="btn btn-info btn-icon-split">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-check"></i>
-                                            </span>
-                                            <span class="text">Detail & verifikasi</span>
+                                        <a href="?url=delete_pengaduan&id=<?php echo $data['id_pengaduan']; ?>"
+                                         class="btn btn-danger btn-circle"
+                                         onclick="return confirm('yakin mau hapus?')">
+                                         <i class="fas fa-trash"></i>                                           
                                         </a>
                                     </td>
                                 </tr>

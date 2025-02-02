@@ -13,22 +13,24 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $data = $result->fetch_assoc();
     
-    session_start(); // Pindahkan session_start ke atas untuk memastikan session dimulai
+    session_start(); // Memulai sesi setelah koneksi berhasil dan data ditemukan
 
     // Cek level pengguna
     if ($data['level'] == "admin") {
-        $_SESSION['id_petugas']=$data['petugas'];
-        $_SESSION['user'] = $user;  // Ambil nama yang sesuai dari hasil query
+        session_start();
+        $_SESSION['id_petugas'] = $data['id_petugas'];
+        $_SESSION['user'] = $user;  
         $_SESSION['nama'] = $data['nama_petugas'];
         $_SESSION['level'] = $data['level'];
-        header('Location:admin/admin.php');
-        exit(); // Pastikan untuk keluar setelah redirect
+        header('Location: admin/admin.php');
+        exit();
     } else if ($data['level'] == "petugas") {
-        $_SESSION['user'] = $user;  // Ambil nama yang sesuai dari hasil query
+        session_start();
+        $_SESSION['user'] = $user;  
         $_SESSION['nama'] = $data['nama_petugas'];
         $_SESSION['level'] = $data['level'];
-        header('Location:petugas/petugas.php');
-        exit(); // Pastikan untuk keluar setelah redirect
+        header('Location: petugas/petugas.php');
+        exit();
     }
 } else {
     echo "<script type='text/javascript'>

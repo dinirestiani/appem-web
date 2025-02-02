@@ -7,15 +7,47 @@ if (isset($_GET['url'])) {
     $url = $_GET['url'];
      
     switch($url) {
-        case 'verifikasi_pengaduan':
-            include 'verifikasi_pengaduan.php';
-            break;
-            case 'detail_pengaduan':
+                case 'verifikasi_pengaduan':
+                include 'verifikasi_pengaduan.php';
+                break;
+                case 'detail_pengaduan':
                 include 'detail_pengaduan.php';
                 break;
                 case 'tanggapan':
-                    include 'tanggapan.php';
-                    break;
+                include 'tanggapan.php';
+                break;
+                case 'lihat_petugas';
+                include 'lihat_petugas.php';
+                break;
+                case 'tambah_petugas';
+                include 'tambah_petugas.php';
+                break;
+                case 'edit_petugas';
+                include 'edit_petugas.php';
+                break;
+                case 'preview_petugas';
+                include 'preview_petugas.php';
+                break;
+                case 'lihat_masyarakat';
+                include 'lihat_masyarakat.php';
+                break;
+                case 'preview_masyarakat';
+                include 'preview_masyarakat.php';
+                break;
+                case 'lihat_laporan';
+                include 'lihat_laporan.php';
+                break;
+                case 'preview_pengaduan';
+                include 'preview_pengaduan.php';
+                break;
+                case 'lihat_tanggapan';
+                include 'lihat_tanggapan.php';
+                break;
+                case 'preview_tanggapan';
+                include 'preview_tanggapan.php';
+                break;
+                
+
     
 
 
@@ -31,7 +63,7 @@ if (isset($_GET['url'])) {
     <div>
         Selamat datang di aplikasi pelaporan pengaduan masyarakat (APPEM) yang dibuat untuk melaporkan pelanggaran
         atau penyimpangan kejadian-kejadian yang ada pada masyarakat. <br><br>
-        Anda login sebagai: <h2><b><?php echo isset($_SESSION['nama']) ; ?></b></h2> 
+        Anda login sebagai: <h2><b><?php echo ($_SESSION['nama']) ; ?></b></h2> 
     </div>
 
     <?php

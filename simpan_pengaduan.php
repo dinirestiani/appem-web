@@ -14,7 +14,7 @@ $sql = "INSERT INTO pengaduan (tgl_pengaduan, nik, isi_laporan, foto, status) VA
 
 // Memindahkan file yang diunggah ke folder "foto"
 if (move_uploaded_file($file_tmp, "foto/wi ha joon (3)" . $ft)) {
-    if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($koneksi, $sql)) {
         echo "<script type='text/javascript'>
                 alert('Data Berhasil Disimpan, terimakasih sudah menulis laporan'); 
                 window.location.href='masyarakat.php';
@@ -33,5 +33,5 @@ if (move_uploaded_file($file_tmp, "foto/wi ha joon (3)" . $ft)) {
 }
 
 // Tutup koneksi
-mysqli_close($conn);
+mysqli_close($koneksi);
 ?>
